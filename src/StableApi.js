@@ -1,4 +1,4 @@
-const IQOptionApi = require('./IQOptionApi');
+const IQOptionApi = require("./IQOptionApi");
 
 class IQOption {
     constructor(email, password) {

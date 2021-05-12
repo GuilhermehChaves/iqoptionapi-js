@@ -1,4 +1,4 @@
-require('./Global');
+require("./Global");
 const login = require("./http/Login");
 const ConnectionResponse = require("./response/ConnectionResponse");
 
@@ -18,7 +18,7 @@ module.exports = class IQOptionApi {
 
         try {
             response = login.send(this.username, this.password);
-        } catch(ex) {
+        } catch (ex) {
             return ex;
         }
 
@@ -30,17 +30,16 @@ module.exports = class IQOptionApi {
         ssl_mutual_exclusion_write = false;
 
         if (SSID != null) {
-
-        } else {
-            const response = await this.getSSID();
-            try {
-                SSID = response.data['ssid'];
-            } catch(exception) {
-                // close
-                return new ConnectionResponse(false, response.data['message']);
-            }     
+            return null;
+        }
+        const response = await this.getSSID();
+        try {
+            SSID = response.data.ssid;
+        } catch (exception) {
+            // close
+            return new ConnectionResponse(false, response.data.message);
         }
 
         return new ConnectionResponse(true, "connected");
     }
-}
+};

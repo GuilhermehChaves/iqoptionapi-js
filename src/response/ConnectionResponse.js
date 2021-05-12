@@ -3,4 +3,4 @@ module.exports = class ConnectionResponse {
         this.connected = connected;
         this.reason = reason;
     }
-}
+};
